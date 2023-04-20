@@ -1,0 +1,37 @@
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+
+</mat-grid-list>
+
+<ng-template #divHeroe>
+  
+  <div 
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="30px"
+  >
+    <div fxFlex="50">
+      <h2>{{heroe.superhero}} - <small>{{heroe.alter_ego}}</small></h2>
+      <mat-divider></mat-divider>
+
+      <img [src]="heroe | imagen" />
+    </div>
+
+    <div fxFlex="50">
+      <h2>{{heroe.publisher}}</h2>
+      <mat-divider></mat-divider>
+      
+      <mat-list>
+        <mat-list-item>{{heroe.first_appearance}}</mat-list-item>
+        <mat-list-item>{{heroe.characters}}</mat-list-item>
+      </mat-list>
+
+      <button
+        mat-button
+        routerLink="heores/listado"
+      >
+        Volver
+      </button>
+    </div>
+  </div>
+
+</ng-template>

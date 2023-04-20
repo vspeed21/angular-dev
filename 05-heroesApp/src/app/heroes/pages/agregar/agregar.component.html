@@ -1,0 +1,106 @@
+<h1>Nuevo SuperHéroe</h1>
+
+<div fxLayout="row" fxLayoutGap="30px" fxLayout.xs="column">
+  <div fxFlex="50" fxLayout="column">
+    <div
+      fxLayout="row"
+      fxLayoutGap="20px"
+      fxLayoutGap.xs="5px"
+      fxLayout.xs="column"
+    >
+      <mat-form-field>
+        <mat-label>Super Héroe</mat-label>
+        <input
+          matInput
+          type="text"
+          name="superheroe"
+          [(ngModel)]="heroe.superhero"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Alter Ego</mat-label>
+        <input
+          matInput
+          type="text"
+          name="alter_ego"
+          [(ngModel)]="heroe.alter_ego"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Primera Aparición</mat-label>
+      <input
+        matInput
+        type="text"
+        name="first_appearance"
+        [(ngModel)]="heroe.first_appearance"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Personajes</mat-label>
+      <input
+        matInput
+        type="text"
+        name="characters"
+        [(ngModel)]="heroe.characters"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Casa creadora</mat-label>
+      <mat-select
+        name="publisher"
+        [(ngModel)]="heroe.publisher"
+      >
+        <mat-option
+          *ngFor="let publisher of publishers"
+          [value]="publisher.id"
+        >
+          {{publisher.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Foto URL</mat-label>
+      <input
+        matInput
+        type="url"
+        name="alt_img"
+        [(ngModel)]="heroe.alt_img"
+        required
+      />
+    </mat-form-field>
+
+    <div>
+      <button 
+        mat-raised-button
+        color="primary"
+        (click)="guardarHeroe()"
+      >
+        Guardar
+      </button>
+
+    <button
+      *ngIf="heroe.id"
+      mat-raised-button
+      color="warn"
+      (click)="eliminar()"
+    >
+    <mat-icon>trash</mat-icon>
+      Eliminar
+    </button>
+    </div>
+
+  </div>
+
+  <div fxFlex="50">
+    <img [src]="heroe | imagen" />
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="text-layout">
+  <h2>Pipes Básicos</h2>
+  <p>Pipes incluidos en angular - Usualmente por el modulo de CommonModule</p>
+</div>
+
+<div class="grid">
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Saludos {{genero | i18nSelect:estimadoMap}} {{nombre}}, es un placer 
+        {{genero | i18nSelect:invitacionMap}}
+        a nuestro evento
+      </p>
+
+      <button pButton label="Masculino" (click)="cambiarMasculino()"></button>
+      <button pButton label="Femenino" (click)="cambiarFemenino()"></button>
+      
+    </p-fieldset>
+  </div>
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      Actualemente {{ clientes.length |i18nPlural:clientesPlural }}
+
+      <button pButton label="Atender" (click)="atender()"></button> 
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="slice pipe" [toggleable]="true">
+      <b>Original</b>
+      <pre>{{ clientes }}</pre>
+
+      <b>slice:0:2</b>
+      <pre>{{ clientes | slice:0:2 }}</pre>
+
+      <b>slice:1:3</b>
+      <pre>{{ clientes | slice:1:3 }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="slice pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let item of persona | keyvalue">
+          <b>{{item.key | titlecase}}:</b> {{item.value}}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="Async pipe" [toggleable]="true">
+      <pre>{{ myObservable | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>
